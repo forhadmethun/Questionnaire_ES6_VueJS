@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+    <body>
+        <div id="app">
+            <input type="text" class="myInput"  v-model="searchAlbumByTitle"  placeholder="Search Album Title.."> <br/>
+            <input type="text" class="myInput" v-model="searchPhotosByTitle"  placeholder="Search Photos Title.."> <br/>
+
+            <button type="button" @click = "leftClick()">< </button>
+            <button type="button" @click="rightClick()">> </button>
+            <p>Showing {{fromData}} - {{toData}} of {{totalData}}</p>
+
+
+            <table id="myTable"  class="fixed_header">
+                <tr class="header">
+                    <th style="width:25%;">{{album.id}}<button type="button" @click = "sortById">↑↓ </button></th>
+                    <th style="width:25%;">{{album.title}} <button type="button" @click = "sortByAlbumTitle">↑↓ </button> </th>
+                    <th style="width:25%;">{{photos.title}} <button type="button" @click = "sortByPhotosTitle">↑↓ </button> </th>
+                    <th style="width:25%;">{{photos.thumbnail}} </th>
+                </tr>
+                <tr v-for="(td,i) in filteredList.slice(page* rowCount, page* rowCount + rowCount)" :key="i">
+                    <td>{{td.albumId}}</td>
+                    <td>{{td.albumTitle}}</td>
+                    <td>{{td.title}}</td>
+                    <td><img :src="td.thumbnailUrl" alt=""></td>
+                </tr>
+            </table>
+       </div>
+    </body>
+</html>
+
+<script type="text/javascript" src="./js/vue.js"></script>
+<script type="text/javascript" src="./js/main.js"></script>

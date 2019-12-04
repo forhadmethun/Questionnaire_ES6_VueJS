@@ -1,0 +1,7 @@
+Vue Devtools (on Chrome browser) is visible only in development mode.
+How do you enable it in production?
+
+=> According to the reference of the link - 'https://github.com/vuejs/vue-devtools/issues/190'
+Setting the following before any references to Vue will do the job:
+
+Vue.config.devtools = true
